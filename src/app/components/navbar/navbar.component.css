@@ -4,7 +4,6 @@
     background-color: var(--blue);
     display: flex;
     align-items: center;
-    background-color: yellow;
 }
 
 #nav-content {
@@ -12,11 +11,9 @@
     align-items: center;
     justify-content: center;
     margin-left: 10vw;
-    background-color: blue;
 }
 
 .title  {
     color: white;
     font-size: 2rem;
-    background-color: red;
 }

@@ -3,7 +3,8 @@ import { SharedDataService } from 'src/app/shared-data.service';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { CampaignFormComponent } from '../campaign-form/campaign-form.component';
 import { ChangeDetectorRef } from '@angular/core';
-import { Observable, startWith } from 'rxjs';
+import { Observable, Subject, startWith } from 'rxjs';
+import { Campaign } from 'src/app/interfaces/campaign';
 
 @Component({
   selector: 'app-campaigns-list',
@@ -12,7 +13,6 @@ import { Observable, startWith } from 'rxjs';
 })
 export class CampaignsListComponent {
 
-  data: any[] = [];
   selectedProduct = this.service.getSelectedProduct();
   selectedCampaign = this.service.getSelectedCampaign();
 
@@ -23,20 +23,18 @@ export class CampaignsListComponent {
     this.service.deselectProduct();
   }
 
-  openDialog(){
-    console.log("opening modal");
+  openDialog(mode: string){
     const dialogConfig = new MatDialogConfig();
     dialogConfig.width = '40vw';
     dialogConfig.height = '70vh';
-    this.dialog.open(CampaignFormComponent, dialogConfig);
+    dialogConfig.data = mode
+    this.service.dialogRef = this.dialog.open(CampaignFormComponent, dialogConfig);
   }
 
   deleteSelected() {
     console.log("deleting campaign");
-    this.service.deleteSelectedCampaign().subscribe(() => {
-      this.service.deselectCampaign();
-      // TODO refresh  campaigns view
-    });
+    this.service.deleteSelectedCampaign();
+    // TODO refresh  campaigns view
   }
 
 }

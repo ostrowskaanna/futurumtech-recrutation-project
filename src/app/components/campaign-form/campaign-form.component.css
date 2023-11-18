@@ -6,3 +6,41 @@
     width: 100%;
   }
 
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+input{
+  width: 20vw;
+  margin: 1vh;
+  border-radius: 20px;
+  border: 5px solid var(--gray);
+  padding-left: 1vw;
+}
+
+select{
+  width: 21.5vw;
+  margin: 1vh;
+  border-radius: 20px;
+  border: 5px solid var(--gray);
+  padding-left: 1vw;
+  color: gray;
+  text-align: center;
+}
+
+button{
+  width: 9vw;
+  background-color: var(--gray);
+  color: black;
+}
+
+button:hover{
+  transition: 0.7s;
+}
+
+input{
+  text-align: center;
+}

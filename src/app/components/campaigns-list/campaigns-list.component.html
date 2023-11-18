@@ -1,7 +1,7 @@
 <div class="list-container">
     <div class="buttons-container">
-        <button id="add-button" (click)="openDialog()">Add</button>
-        <button id="update-button" (click)="openDialog()" [disabled]="!(selectedCampaign | async)">Update</button>
+        <button id="add-button" (click)="openDialog('add')">Add</button>
+        <button id="update-button" (click)="openDialog('update')" [disabled]="!(selectedCampaign | async)">Update</button>
         <button id="delete-button" (click)="deleteSelected()" [disabled]="!(selectedCampaign | async)">Delete</button>
     </div>
     <div class="list-content">

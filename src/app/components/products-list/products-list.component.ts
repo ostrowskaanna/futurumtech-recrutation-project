@@ -21,9 +21,11 @@ export class ProductsListComponent {
   // read data from localStorage 
   getData() {
     const storedDataString = localStorage.getItem(this.service.dataStorageKey);
+    console.log(storedDataString);
     if (storedDataString) {
       const storedData = JSON.parse(storedDataString);
       this.data = storedData.products;
+      console.log(this.data);
     }
   }
 
