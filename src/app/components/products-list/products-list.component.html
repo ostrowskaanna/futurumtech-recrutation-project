@@ -1,0 +1,10 @@
+<div class="list-container">
+    <div class="list-content" >
+        <p class="product" *ngFor="let item of data" (click)="service.selectProduct({id: item.id, name: item.name, campaigns: item.campaigns})" [ngClass]="{'selected': item.id === (selectedProduct | async)?.id}">
+            {{item.name}}
+        </p>
+    </div>
+    <div class="buttons-container">
+        <button id="campaigns-button" (click)="showCampaigns()" [disabled]="!(selectedProduct | async)">Show campaigns</button>
+    </div>
+</div>

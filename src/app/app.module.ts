@@ -1,14 +1,30 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
+import { MatDialogModule } from '@angular/material/dialog';
 
 import { AppComponent } from './app.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { ContentComponent } from './components/content/content.component';
+import { ProductsListComponent } from './components/products-list/products-list.component';
+import { CampaignsListComponent } from './components/campaigns-list/campaigns-list.component';
+import { CampaignFormComponent } from './components/campaign-form/campaign-form.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    NavbarComponent,
+    ContentComponent,
+    ProductsListComponent,
+    CampaignsListComponent,
+    CampaignFormComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

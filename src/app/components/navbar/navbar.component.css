@@ -1,0 +1,22 @@
+#nav-container {
+    width: 100vw;
+    height: 10vh;
+    background-color: var(--blue);
+    display: flex;
+    align-items: center;
+    background-color: yellow;
+}
+
+#nav-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 10vw;
+    background-color: blue;
+}
+
+.title  {
+    color: white;
+    font-size: 2rem;
+    background-color: red;
+}

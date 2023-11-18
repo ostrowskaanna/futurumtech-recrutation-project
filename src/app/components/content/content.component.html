@@ -1,0 +1,11 @@
+<div id="content-container">
+    <div class="title-container">
+        <h1 class="title" *ngIf="service.currentDisplayType$ | async as displayType">
+            {{ displayType === 'products' ? 'Products List' : 'Campaigns List for ' + (selectedProduct | async)?.name }}
+        </h1>
+    </div>
+    <div class="list-container">
+        <app-products-list *ngIf="(service.currentDisplayType$ | async) === 'products'"></app-products-list>
+        <app-campaigns-list *ngIf="(service.currentDisplayType$ | async) === 'campaigns'"></app-campaigns-list>
+    </div>
+</div>

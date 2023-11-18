@@ -1,0 +1,12 @@
+#page-container {
+    width: 100vw;
+    height: 100vh;
+}
+
+#page-content {
+    height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--gray);
+}
