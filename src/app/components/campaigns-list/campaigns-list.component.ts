@@ -37,7 +37,7 @@ export class CampaignsListComponent {
   openDialog(mode: string){
     const dialogConfig = new MatDialogConfig();
     dialogConfig.width = '40vw';
-    dialogConfig.height = '70vh';
+    dialogConfig.height = '80vh';
     dialogConfig.data = mode
     this.service.dialogRef = this.dialog.open(CampaignFormComponent, dialogConfig);
   }
