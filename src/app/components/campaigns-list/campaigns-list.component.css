@@ -34,7 +34,7 @@
     width: 100%;
 }
 
-button {
+#add-button, #update-button, #delete-button {
     width: 9vw;
     margin: 0;
 }

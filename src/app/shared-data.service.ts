@@ -25,7 +25,6 @@ export class SharedDataService {
   selectedCampaign$ = this.selectedCampaignSource.asObservable();
 
   dialogRef: MatDialogRef<CampaignFormComponent> | undefined;
-  data: Product[] = [];
 
   constructor(private http: HttpClient) { }
   
@@ -42,13 +41,10 @@ export class SharedDataService {
   // read data from localStorage 
   getDataFromStorage() {
     const storedDataString = localStorage.getItem(this.dataStorageKey);
-    console.log(storedDataString);
     if (storedDataString) {
       const storedData = JSON.parse(storedDataString);
-      this.data = storedData.products;
-      console.log(this.data);
+      return storedData.products;
     }
-    return this.data;
   }
 
   setDisplayType(newDisplayType: string) {

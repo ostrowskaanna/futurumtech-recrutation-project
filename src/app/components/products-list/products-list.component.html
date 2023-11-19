@@ -1,6 +1,6 @@
 <div class="list-container">
     <div class="list-content" >
-        <p class="product" *ngFor="let item of this.data" (click)="service.selectProduct({id: item.id, name: item.name, campaigns: item.campaigns})" [ngClass]="{'selected': item.id === (selectedProduct | async)?.id}">
+        <p class="product" *ngFor="let item of this.service.getDataFromStorage()" (click)="service.selectProduct({id: item.id, name: item.name, campaigns: item.campaigns})" [ngClass]="{'selected': item.id === (selectedProduct | async)?.id}">
             {{item.name}}
         </p>
     </div>

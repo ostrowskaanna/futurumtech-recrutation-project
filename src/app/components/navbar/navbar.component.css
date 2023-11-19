@@ -11,9 +11,11 @@
     align-items: center;
     justify-content: center;
     margin-left: 10vw;
+    height: 100%;
 }
 
 .title  {
     color: white;
     font-size: 2rem;
+    margin-top: 2vh;
 }

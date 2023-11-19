@@ -9,13 +9,11 @@ import { SharedDataService } from 'src/app/shared-data.service';
 })
 export class ProductsListComponent {
 
-  data: Product[] = [];
   selectedProduct = this.service.getSelectedProduct();
 
   constructor(protected service: SharedDataService) {}
 
   ngOnInit() {
-    this.data = this.service.getDataFromStorage();
     this.service.setDisplayType('products');
   }
 

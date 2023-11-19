@@ -25,10 +25,10 @@
         <option value="Wroclaw">Wroclaw</option>
     </select>
   
-    <!-- Radius -->
     <label for="radius">Radius:</label>
     <input type="number" id="radius" formControlName="radius">
   
     <button type="submit" [disabled]="!campaignForm.valid">Submit</button>
+    <p class="info" *ngIf="!campaignForm.valid">All fields are required.</p>
   </form>
   

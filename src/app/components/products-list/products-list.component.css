@@ -12,12 +12,6 @@
     overflow-y: auto;
 }
 
-.buttons-container {
-    height: 10vh;
-    width: 10vw;
-    display: flex;
-    align-items: center;
-}
 
 #campaigns-button {
     background-color: var(--blue);

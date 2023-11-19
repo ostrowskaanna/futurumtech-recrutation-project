@@ -3,7 +3,6 @@ import { SharedDataService } from 'src/app/shared-data.service';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { CampaignFormComponent } from '../campaign-form/campaign-form.component';
 import { Campaign } from 'src/app/interfaces/campaign';
-import { Product } from 'src/app/interfaces/product';
 
 @Component({
   selector: 'app-campaigns-list',
@@ -44,7 +43,6 @@ export class CampaignsListComponent {
   }
 
   deleteSelected() {
-    console.log("deleting campaign");
     this.service.deleteSelectedCampaign();
   }
 
