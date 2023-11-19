@@ -48,6 +48,15 @@ export class SharedDataService {
   dialogRef: MatDialogRef<CampaignFormComponent> | undefined;
 
   constructor(private http: HttpClient) { }
+
+  ngOnInit() {
+    this.getDataFromFile().subscribe((data) => {
+      localStorage.setItem(this.dataStorageKey, JSON.stringify(data));
+    },
+    (error) => {
+      console.error(error);
+    });
+  }
   
   // read data from json
   getDataFromFile(): Observable<any> {
