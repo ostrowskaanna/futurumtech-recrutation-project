@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, catchError, combineLatest, map, of, switchMap, take } from 'rxjs';
+import { BehaviorSubject, Observable, catchError, combineLatest, debounceTime, distinctUntilChanged, map, of, switchMap, take } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Product } from './interfaces/product';
 import { Campaign } from './interfaces/campaign';
@@ -24,6 +24,27 @@ export class SharedDataService {
   private selectedCampaignSource = new BehaviorSubject<Campaign | undefined>(undefined);
   selectedCampaign$ = this.selectedCampaignSource.asObservable();
 
+  searchKeywords$ = new BehaviorSubject<string>('');
+  
+  // Keywords from other campaigns 
+  keywords$: Observable<string[]> = this.searchKeywords$.pipe(
+    debounceTime(300),
+    distinctUntilChanged(),
+    switchMap((word) => {
+      const selectedProduct = this.selectedProductSource.value;
+      if (selectedProduct) {
+        const campaigns = selectedProduct.campaigns;
+        const matchingKeywords = campaigns.map((campaign) => campaign.keywords)
+          .flat()
+          .filter((keyword, index, self) => self.indexOf(keyword) === index)
+          .filter((keyword) => keyword.toLowerCase().includes(word.toLowerCase()));
+        return of(matchingKeywords);
+      } else {
+        return of([]);
+      }
+    })
+  );
+
   dialogRef: MatDialogRef<CampaignFormComponent> | undefined;
 
   constructor(private http: HttpClient) { }
@@ -46,6 +67,7 @@ export class SharedDataService {
       return storedData.products;
     }
   }
+
 
   setDisplayType(newDisplayType: string) {
     this.displayTypeSource.next(newDisplayType);
@@ -118,7 +140,7 @@ export class SharedDataService {
       const newCampaign: Campaign = {
         id: selectedProduct.campaigns.length + 1,
         name: campaignForm.value.campaignName,
-        keywords: campaignForm.value.keywords,
+        keywords: campaignForm.value.keywords.split(' ').map((keyword: string) => keyword.trim()),
         bidAmount: campaignForm.value.bidAmount,
         campaignFund: campaignForm.value.campaignFund,
         status: campaignForm.value.status,

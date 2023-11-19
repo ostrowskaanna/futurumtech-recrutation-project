@@ -1,7 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { Observable, take } from 'rxjs';
+import { BehaviorSubject, Observable, debounceTime, map, take } from 'rxjs';
 import { SharedDataService } from 'src/app/shared-data.service';
 import { Campaign } from 'src/app/interfaces/campaign';
 
@@ -28,7 +28,7 @@ export class CampaignFormComponent {
   }
 
   ngOnInit() {
-    // fill form with values if update
+    // Fill form with values if update
     if (this.data === 'update') {
       this.service.getSelectedCampaign().pipe(take(1)).subscribe(selectedCampaign => {
         if (selectedCampaign) {
@@ -45,6 +45,14 @@ export class CampaignFormComponent {
         }
       });
     }
+  }
+
+  // Search  keywords and dispaly to console
+  searchKeywords() {
+    this.service.searchKeywords$.next(this.campaignForm.get('keywords')?.value.split(' ').pop());
+    this.service.keywords$.subscribe(word => {
+      console.log(word);
+    })
   }
 
   // Handle form submission
