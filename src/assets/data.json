@@ -55,22 +55,106 @@
       {
         "id": 3,
         "name": "Product 3",
-        "campaigns": []
+        "campaigns": [
+          {
+            "id": 1,
+            "name": "Campaign 1",
+            "keywords": ["word1", "word2"],
+            "bidAmount": 50,
+            "campaignFund": 1000,
+            "status": "off",
+            "town": "Cracow",
+            "radius": 10
+          },
+          {
+            "id": 2,
+            "name": "Campaign 2",
+            "keywords": ["word1", "word2"],
+            "bidAmount": 40,
+            "campaignFund": 900,
+            "status": "off",
+            "town": "Cracow",
+            "radius": 10
+          }
+        ]
       },
       {
         "id": 4,
         "name": "Product 4",
-        "campaigns": []
+        "campaigns": [
+          {
+            "id": 1,
+            "name": "Campaign 1",
+            "keywords": ["word1", "word2"],
+            "bidAmount": 50,
+            "campaignFund": 1000,
+            "status": "off",
+            "town": "Cracow",
+            "radius": 10
+          },
+          {
+            "id": 2,
+            "name": "Campaign 2",
+            "keywords": ["word1", "word2"],
+            "bidAmount": 40,
+            "campaignFund": 900,
+            "status": "off",
+            "town": "Cracow",
+            "radius": 10
+          }
+        ]
       },
       {
         "id": 5,
         "name": "Product 5",
-        "campaigns": []
+        "campaigns": [
+          {
+            "id": 1,
+            "name": "Campaign 1",
+            "keywords": ["word1", "word2"],
+            "bidAmount": 50,
+            "campaignFund": 1000,
+            "status": "off",
+            "town": "Cracow",
+            "radius": 10
+          },
+          {
+            "id": 2,
+            "name": "Campaign 2",
+            "keywords": ["word1", "word2"],
+            "bidAmount": 40,
+            "campaignFund": 900,
+            "status": "off",
+            "town": "Cracow",
+            "radius": 10
+          }
+        ]
       },
       {
         "id": 6,
         "name": "Product 6",
-        "campaigns": []
+        "campaigns": [
+          {
+            "id": 1,
+            "name": "Campaign 1",
+            "keywords": ["word1", "word2"],
+            "bidAmount": 50,
+            "campaignFund": 1000,
+            "status": "off",
+            "town": "Cracow",
+            "radius": 10
+          },
+          {
+            "id": 2,
+            "name": "Campaign 2",
+            "keywords": ["word1", "word2"],
+            "bidAmount": 40,
+            "campaignFund": 900,
+            "status": "off",
+            "town": "Cracow",
+            "radius": 10
+          }
+        ]
       }
     ]
   }

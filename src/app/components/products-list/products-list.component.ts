@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Product } from 'src/app/interfaces/product';
 import { SharedDataService } from 'src/app/shared-data.service';
 
 @Component({
@@ -8,25 +9,14 @@ import { SharedDataService } from 'src/app/shared-data.service';
 })
 export class ProductsListComponent {
 
-  data: any[] = [];
+  data: Product[] = [];
   selectedProduct = this.service.getSelectedProduct();
 
   constructor(protected service: SharedDataService) {}
 
   ngOnInit() {
-    this.getData();
+    this.data = this.service.getDataFromStorage();
     this.service.setDisplayType('products');
-  }
-
-  // read data from localStorage 
-  getData() {
-    const storedDataString = localStorage.getItem(this.service.dataStorageKey);
-    console.log(storedDataString);
-    if (storedDataString) {
-      const storedData = JSON.parse(storedDataString);
-      this.data = storedData.products;
-      console.log(this.data);
-    }
   }
 
   showCampaigns() {

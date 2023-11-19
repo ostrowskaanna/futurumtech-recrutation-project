@@ -25,18 +25,10 @@ export class SharedDataService {
   selectedCampaign$ = this.selectedCampaignSource.asObservable();
 
   dialogRef: MatDialogRef<CampaignFormComponent> | undefined;
+  data: Product[] = [];
 
   constructor(private http: HttpClient) { }
-
-  ngOnInit() {
-    this.getDataFromFile().subscribe((data) => {
-      localStorage.setItem(this.dataStorageKey, JSON.stringify(data));
-    },
-    (error) => {
-      console.error(error);
-    });
-  }
-
+  
   // read data from json
   getDataFromFile(): Observable<any> {
     return this.http.get(this.dataUrl).pipe(
@@ -45,6 +37,18 @@ export class SharedDataService {
         return of([]);
       })
     );
+  }
+
+  // read data from localStorage 
+  getDataFromStorage() {
+    const storedDataString = localStorage.getItem(this.dataStorageKey);
+    console.log(storedDataString);
+    if (storedDataString) {
+      const storedData = JSON.parse(storedDataString);
+      this.data = storedData.products;
+      console.log(this.data);
+    }
+    return this.data;
   }
 
   setDisplayType(newDisplayType: string) {
@@ -98,6 +102,8 @@ export class SharedDataService {
       storedData.products = storedData.products.map((product: any) => {
         if (product.id === productId) {
           product.campaigns = product.campaigns.filter((campaign: any) => campaign.id !== campaignId);
+          // Change product source to update campaigns list
+          this.selectedProductSource.next(product);
         }
         return product;
       });
@@ -107,6 +113,7 @@ export class SharedDataService {
       this.deselectCampaign();
     }
   }
+
 
   addNewCampaign(campaignForm: FormGroup) {
     const selectedProduct = this.selectedProductSource.value;
@@ -175,12 +182,15 @@ export class SharedDataService {
             }
             return campaign;
           });
+          // Change product source to update campaigns list
+          this.selectedProductSource.next(product);
         }
         return product;
       });
   
       // Update data
       localStorage.setItem(this.dataStorageKey, JSON.stringify(storedData));
+      this.deselectCampaign();
 
       if (this.dialogRef) {
         this.dialogRef.close();

@@ -1,10 +1,9 @@
-import { Component } from '@angular/core';
+import { Component} from '@angular/core';
 import { SharedDataService } from 'src/app/shared-data.service';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { CampaignFormComponent } from '../campaign-form/campaign-form.component';
-import { ChangeDetectorRef } from '@angular/core';
-import { Observable, Subject, startWith } from 'rxjs';
 import { Campaign } from 'src/app/interfaces/campaign';
+import { Product } from 'src/app/interfaces/product';
 
 @Component({
   selector: 'app-campaigns-list',
@@ -16,7 +15,20 @@ export class CampaignsListComponent {
   selectedProduct = this.service.getSelectedProduct();
   selectedCampaign = this.service.getSelectedCampaign();
 
-  constructor(protected service: SharedDataService, private cdr: ChangeDetectorRef, private dialog: MatDialog) {}
+  campaigns: Campaign[] | undefined;
+
+  constructor(protected service: SharedDataService, private dialog: MatDialog) {}
+
+  ngOnInit() {
+    this.getCampaigns();
+  }
+
+  getCampaigns() {
+    this.selectedProduct.subscribe((product) => {
+      this.campaigns = product?.campaigns;
+    })
+    console.log(this.campaigns);
+  }
 
   showProducts() {
     this.service.setDisplayType('products');
@@ -34,7 +46,6 @@ export class CampaignsListComponent {
   deleteSelected() {
     console.log("deleting campaign");
     this.service.deleteSelectedCampaign();
-    // TODO refresh  campaigns view
   }
 
 }

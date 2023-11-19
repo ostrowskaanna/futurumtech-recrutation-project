@@ -5,7 +5,7 @@
         <button id="delete-button" (click)="deleteSelected()" [disabled]="!(selectedCampaign | async)">Delete</button>
     </div>
     <div class="list-content">
-        <p class="campaign" *ngFor="let camp of (selectedProduct | async)?.campaigns" (click)="service.selectCampaign(camp)" [ngClass]="{'selected': camp.id === (selectedCampaign | async)?.id}">
+        <p class="campaign" *ngFor="let camp of this.campaigns" (click)="service.selectCampaign(camp)" [ngClass]="{'selected': camp.id === (selectedCampaign | async)?.id}">
             {{camp.name}}
         </p>
     </div>

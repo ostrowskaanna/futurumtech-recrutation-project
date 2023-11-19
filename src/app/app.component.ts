@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { SharedDataService } from './shared-data.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,16 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'frontend';
+
+  constructor(private service: SharedDataService) { }
+
+  ngOnInit() {
+    this.service.getDataFromFile().subscribe((data) => {
+      localStorage.setItem(this.service.dataStorageKey, JSON.stringify(data));
+    },
+    (error) => {
+      console.error(error);
+    });
+  }
 }
+
