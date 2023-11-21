@@ -49,7 +49,7 @@ export class CampaignFormComponent {
 
   // Search  keywords and dispaly to console
   searchKeywords() {
-    this.service.searchKeywords$.next(this.campaignForm.get('keywords')?.value.split(' ').pop());
+    this.service.searchKeywords$.next(this.campaignForm.get('keywords')?.value.split(',').pop());
     this.service.keywords$.subscribe(word => {
       console.log(word);
     })
