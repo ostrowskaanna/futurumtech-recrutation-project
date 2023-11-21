@@ -19,10 +19,11 @@ body {
 
 button{
     font-size: 1rem;
-    height: 5vh;
     border-radius: 5%;
     border-color: transparent;
     cursor: pointer;
+    padding-top: 10px;
+    padding-bottom: 10px;
     margin-left: 1vw;
     margin-right: 1vw;
 }
