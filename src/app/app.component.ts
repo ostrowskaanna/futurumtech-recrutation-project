@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -9,5 +9,10 @@ export class AppComponent {
   title = 'frontend';
 
   constructor() { }
+
+  @HostListener('window:beforeunload', ['$event'])
+  unloadHandler(event: Event) {
+    localStorage.clear();
+  }
 }
 
