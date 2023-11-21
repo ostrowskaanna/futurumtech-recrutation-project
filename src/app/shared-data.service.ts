@@ -147,7 +147,7 @@ export class SharedDataService {
       const newCampaign: Campaign = {
         id: selectedProduct.campaigns.length + 1,
         name: campaignForm.value.campaignName,
-        keywords: campaignForm.value.keywords.split(' ').map((keyword: string) => keyword.trim()),
+        keywords: campaignForm.value.keywords.split(',').map((keyword: string) => keyword.trim()),
         bidAmount: campaignForm.value.bidAmount,
         campaignFund: campaignForm.value.campaignFund,
         status: campaignForm.value.status,
@@ -197,7 +197,7 @@ export class SharedDataService {
               return {
                 id: campaign.id,
                 name: campaignForm.value.campaignName,
-                keywords: campaignForm.value.keywords,
+                keywords: campaignForm.value.keywords.split(',').map((keyword: string) => keyword.trim()),
                 bidAmount: campaignForm.value.bidAmount,
                 campaignFund: campaignForm.value.campaignFund,
                 status: campaignForm.value.status,
